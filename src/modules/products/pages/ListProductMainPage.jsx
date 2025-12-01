@@ -1,13 +1,34 @@
 import { useState, useEffect } from 'react';
 import { mockProducts } from '../../../data/mockData';
 import ProductCard from '../components/ProductCard';
+import { getMainProducts } from '../services/listMain';
 
 function ListProductMainPage() {
   const [products, setProducts] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
+  const fetchProducts = async () => {
+    try{
+      setLoading(true);
+      const { data, error } = await getMainProducts();
+
+      if (error) throw error;
+
+      console.log("DATA DEL BACKEND", data);
+
+      setProducts(data);
+    } catch (error){
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+
+  }
+
   useEffect(() => {
     // 1. Simulación de carga de datos:
-    setProducts(mockProducts);
+    fetchProducts();
   }, []);
 
   return (
@@ -15,7 +36,10 @@ function ListProductMainPage() {
       {/* El título se ha quitado de aquí para evitar la duplicación en la vista. */}
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {products.map((product) => (
+        {
+          loading
+          ? <span>Buscando datos...</span>
+          : products.map((product) => (
           // 2. Por cada producto, renderizamos el componente ProductCard
           <ProductCard key={product.id} product={product} />
         ))}

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useCart } from './useCart'; // Importa el hook que maneja localStorage
+import { useCart } from '../useCart'; // Importa el hook que maneja localStorage
 import { useForm } from 'react-hook-form'; // Para el formulario de login en la modal
 import { Trash2, Minus, Plus, ShoppingCart, Package, X, LogIn } from 'lucide-react';
 
@@ -45,7 +45,6 @@ const CartItemRow = ({ item, updateQuantity, removeFromCart }) => {
                 <div className='flex-1'>
                     <p className="font-semibold text-gray-800">{item.name}</p>
                     {/* PRECIO MÓVIL */}
-                    <p className="text-sm text-gray-500 sm:hidden">Precio: ${item.price.toFixed(2)}</p>
                 </div>
             </td>
             

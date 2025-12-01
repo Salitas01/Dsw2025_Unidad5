@@ -10,7 +10,7 @@ import CreateProductPage from './modules/products/pages/CreateProductPage';
 import RegisterPage from './modules/auth/pages/RegisterPage';
 import Header from './modules/templates/components/Header';
 import ListProductMainPage from './modules/products/pages/ListProductMainPage';
-import Cart from './modules/cart/Cart';
+import Cart from './modules/cart/pages/Cart';
 
 function App() {
   const router = createBrowserRouter([
