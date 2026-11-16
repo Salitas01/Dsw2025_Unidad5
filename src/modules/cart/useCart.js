@@ -98,6 +98,6 @@ export const useCart = () => {
         updateQuantity,
         clearCart,
         cartCount: cartItems.reduce((total, item) => total + item.quantity, 0),
-        cartTotal: cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        cartTotal: cartItems.reduce((sum, item) => sum + (item.currentUnitPrice * item.quantity), 0),
     };
 };
