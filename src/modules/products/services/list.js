@@ -12,5 +12,5 @@ export const getProducts = async (status = null, SearchTerm = null, pageNumber =
 
   console.log("FETCHING WITH:", status, SearchTerm, pageNumber, pageSize);
 
-  return { data: response.data.items, error: null };
+  return { data: response.data, error: null };
 };
